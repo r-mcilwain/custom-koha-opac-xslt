@@ -18,12 +18,10 @@ Please note: when changing Koha XSLT files, it is advised to use duplicates of t
 1. Locate XSLT files
 In Debian package installations of Koha, these are located in your theme inside a folder named 'xslt' under the locale of the selected theme you are using, e.g. `/usr/share/koha/opac/htdocs/opac-tmpl/bootstrap/en/xslt/`.
 
-2. Download the XSLT files here
+2. Download the XSLT files included here.
 
 3. Change their names, appending '-custom' for example.
 
 4. Upload files to the xslt folder of your Koha instance.
 
-5. Change Koha system preference **OPACXSLTResultsDisplay** from its original setting (i.e. “default”) to the path of our new file MARC21slim2OPACResults-custom.xsl. In this example that would be `/usr/share/koha/opac/htdocs/opac-tmpl/bootstrap/en/xslt/`. 
-
-Likewise the other system preference OPACXSLTDetailsDisplay was changed to `/usr/share/koha/opac/htdocs/opac-tmpl/bootstrap/en/xslt/MARC21slim2OPACDetail-custom.xsl`.
+5. Change Koha system preference **OPACXSLTResultsDisplay** from its original setting (i.e. “default”) to the path of our new file MARC21slim2OPACResults-custom.xsl. In this example that would be `/usr/share/koha/opac/htdocs/opac-tmpl/bootstrap/en/xslt/`. Likewise the other system preference OPACXSLTDetailsDisplay was changed to `/usr/share/koha/opac/htdocs/opac-tmpl/bootstrap/en/xslt/MARC21slim2OPACDetail-custom.xsl`.
