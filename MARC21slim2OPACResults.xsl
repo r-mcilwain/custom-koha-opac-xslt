@@ -426,32 +426,9 @@
         </xsl:attribute>
         <xsl:attribute name="class"><xsl:value-of select="'title'" /></xsl:attribute>
 
-        <xsl:if test="marc:datafield[@tag=245]">
-            <xsl:for-each select="marc:datafield[@tag=245]">
-                <xsl:call-template name="subfieldSelect">
-                    <xsl:with-param name="codes">a</xsl:with-param>
-                </xsl:call-template>
-                <xsl:text> </xsl:text>
-                <!-- 13381 add additional subfields-->
-                <!-- bz 17625 adding subfields f and g -->
-                <xsl:for-each select="marc:subfield[contains('bcfghknps', @code)]">
-                    <xsl:choose>
-                        <xsl:when test="@code='h'">
-                            <!--  13381 Span class around subfield h so it can be suppressed via css -->
-                            <span class="title_medium"><xsl:apply-templates/> <xsl:text> </xsl:text> </span>
-                        </xsl:when>
-                        <xsl:when test="@code='c'">
-                            <!--  13381 Span class around subfield c so it can be suppressed via css -->
-                            <span class="title_resp_stmt"><xsl:apply-templates/> <xsl:text> </xsl:text> </span>
-                        </xsl:when>
-                        <xsl:otherwise>
-                            <xsl:apply-templates/>
-                            <xsl:text> </xsl:text>
-                        </xsl:otherwise>
-                    </xsl:choose>
-                </xsl:for-each>
-            </xsl:for-each>
-        </xsl:if>
+        <xsl:value-of select="translate(marc:datafield[@tag=245]/marc:subfield[@code='a'], '\/$|\.$','')"/>
+        <xsl:text> </xsl:text>
+        <xsl:value-of select="translate(marc:datafield[@tag=245]/marc:subfield[@code='b'], '\/$|\.$','')"/>
     </a>
 
     <!-- OpenURL -->
