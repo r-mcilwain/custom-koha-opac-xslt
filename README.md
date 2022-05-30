@@ -1,7 +1,24 @@
-# custom-koha-opac-xslt
+# About
 Custom XSLT files for the results and detail views in Koha
-
+## TL;DR
 These files represent edits to the default XSLT files in the Koha OPAC so that only the a and b subfields of $245, without ISBD or other erroneous punctuation (e.g. trailing slashes and periods), are should in the results and detail views.
+
+## Installation
+
+Please note: when changing Koha XSLT files, it is advised to use duplicates of the originals rather than editing the originals directly.
+
+1. Locate XSLT files
+In Debian package installations of Koha, these are located in your theme inside a folder named 'xslt' under the locale of the selected theme you are using, e.g. `/usr/share/koha/opac/htdocs/opac-tmpl/bootstrap/en/xslt/`.
+
+2. Download the XSLT files here
+
+3. Change their names, appending '-custom' for example.
+
+4. Upload files to the xslt folder of your Koha instance.
+
+5. Change Koha system preference **OPACXSLTResultsDisplay** from its original setting (i.e. “default”) to the path of our new file MARC21slim2OPACResults-custom.xsl. In this example that would be `/usr/share/koha/opac/htdocs/opac-tmpl/bootstrap/en/xslt/`. 
+
+Likewise the other system preference OPACXSLTDetailsDisplay was changed to `/usr/share/koha/opac/htdocs/opac-tmpl/bootstrap/en/xslt/MARC21slim2OPACDetail-custom.xsl`.
 
 Please note: when changing Koha XSLT files, it is advised to use duplicates of the originals rather than editing the originals directly.
 
