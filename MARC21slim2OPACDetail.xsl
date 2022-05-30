@@ -126,37 +126,11 @@
                 </xsl:call-template>
             </h2>
         </xsl:if>
-
-            <!--Bug 13381 -->
-            <xsl:if test="marc:datafield[@tag=245]">
                 <h1 class="title" property="name">
-                    <xsl:for-each select="marc:datafield[@tag=245]">
-                        <xsl:call-template name="subfieldSelect">
-                            <xsl:with-param name="codes">a</xsl:with-param>
-                        </xsl:call-template>
-                        <xsl:text> </xsl:text>
-                        <!-- 13381 add additional subfields-->
-                        <!-- bug17625 adding f and g subfields -->
-                        <xsl:for-each select="marc:subfield[contains('bcfghknps', @code)]">
-                            <xsl:choose>
-                                <xsl:when test="@code='h'">
-                                    <!--  13381 Span class around subfield h so it can be suppressed via css -->
-                                    <span class="title_medium"><xsl:apply-templates/> <xsl:text> </xsl:text> </span>
-                                </xsl:when>
-                                <xsl:when test="@code='c'">
-                                    <!--  13381 Span class around subfield c so it can be suppressed via css -->
-                                    <span class="title_resp_stmt"><xsl:apply-templates/> <xsl:text> </xsl:text> </span>
-                                </xsl:when>
-                                <xsl:otherwise>
-                                    <xsl:apply-templates/>
-                                    <xsl:text> </xsl:text>
-                                </xsl:otherwise>
-                            </xsl:choose>
-                        </xsl:for-each>
-                    </xsl:for-each>
+                    <xsl:value-of select="translate(marc:datafield[@tag=245]/marc:subfield[@code='a'], '\/$|\.$','')"/>
+                    <xsl:text> </xsl:text>
+                    <xsl:value-of select="translate(marc:datafield[@tag=245]/marc:subfield[@code='b'], '\/$|\.$','')"/>
                 </h1>
-            </xsl:if>
-
 
         <!-- Author Statement: Alternate Graphic Representation (MARC 880) -->
         <xsl:if test="$display880">
